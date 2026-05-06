@@ -2,28 +2,492 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>My Links</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechGuard Labs Foundation</title>
+  <meta name="description" content="TechGuard Labs Foundation — Joint Israel–India Cybersecurity Center. Excellence in strategy, compliance, technology, and talent for cyber-resilience.">
+  <meta property="og:title" content="TechGuard Labs Foundation">
+  <meta property="og:description" content="Joint Israel–India Cybersecurity Center — Cybersecurity Consulting Services">
+  <meta property="og:url" content="https://techguardlabs.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    body { font-family: sans-serif; background: #111; color: #fff;
-           display: flex; flex-direction: column; align-items: center;
-           padding: 40px 20px; }
-    h1 { font-size: 1.6rem; margin-bottom: 8px; }
-    p.sub { color: #888; margin-bottom: 32px; }
-    a.btn { display: block; width: 100%; max-width: 400px;
-            background: #1e293b; color: #fff; text-decoration: none;
-            padding: 14px 20px; border-radius: 10px; margin-bottom: 12px;
-            border: 1px solid #334155; font-size: 1rem; text-align: center; }
-    a.btn:hover { background: #334155; }
+    /* ── RESET ──────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+
+    /* ── BASE ───────────────────────────────────────── */
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #e8e8e8;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    /* ── WRAPPER ────────────────────────────────────── */
+    .page {
+      width: 100%;
+      max-width: 480px;
+      background: #ffffff;
+      min-height: 100vh;
+      box-shadow: 0 0 60px rgba(0,0,0,0.18);
+      overflow: hidden;
+    }
+
+    /* ── HEADER ─────────────────────────────────────── */
+    .header {
+      background: #04523C;
+      padding: 44px 28px 32px;
+      text-align: center;
+      position: relative;
+    }
+    .header::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #B69248 30%, #B69248 70%, transparent);
+    }
+    .logo-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 14px;
+    }
+    .logo-wrap svg { width: 210px; height: auto; }
+    .tagline {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #B69248;
+    }
+
+    /* ── SECTION SHELLS ─────────────────────────────── */
+    .sec { padding: 28px 20px; }
+    .sec-label {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: #B69248;
+      margin-bottom: 6px;
+    }
+    .sec-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 1.15rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #04523C;
+      margin-bottom: 18px;
+    }
+    .gold-rule {
+      width: 36px; height: 3px;
+      background: #B69248;
+      border-radius: 2px;
+      margin-bottom: 18px;
+    }
+
+    /* ── BUTTONS ────────────────────────────────────── */
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      width: 100%;
+      min-height: 52px;
+      border-radius: 8px;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+      margin-bottom: 10px;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .btn:last-child { margin-bottom: 0; }
+
+    /* Green primary */
+    .btn-primary {
+      background: #04523C;
+      color: #ffffff;
+      border-color: #04523C;
+    }
+    .btn-primary:hover, .btn-primary:active { background: #033d2d; border-color: #033d2d; }
+
+    /* Outlined social */
+    .btn-outline {
+      background: #ffffff;
+      color: #04523C;
+      border-color: #04523C;
+    }
+    .btn-outline:hover, .btn-outline:active { background: #04523C; color: #ffffff; }
+
+    /* Gold download */
+    .btn-gold {
+      background: #B69248;
+      color: #ffffff;
+      border-color: #B69248;
+    }
+    .btn-gold:hover, .btn-gold:active { background: #9a7a38; border-color: #9a7a38; }
+
+    /* Disabled / coming soon */
+    .btn-disabled {
+      background: #efefef;
+      color: #aaaaaa;
+      border: 1.5px dashed #cccccc;
+      cursor: not-allowed;
+      pointer-events: none;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+    }
+
+    /* Small variant for grid cards */
+    .btn-sm { min-height: 40px; font-size: 0.78rem; padding: 0 12px; margin-bottom: 0; }
+
+    /* ── CONNECT SECTION ────────────────────────────── */
+    .sec-connect { background: #ffffff; }
+
+    /* ── ABOUT SECTION ──────────────────────────────── */
+    .sec-about { background: #D2E8E3; }
+    .about-body {
+      font-size: 0.875rem;
+      line-height: 1.75;
+      color: #1e1e1e;
+      margin-bottom: 22px;
+    }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+    .stat {
+      border-radius: 8px;
+      padding: 14px 8px 12px;
+      text-align: center;
+    }
+    .stat.s-grey  { background: #393939; }
+    .stat.s-gold  { background: #B69248; }
+    .stat.s-green { background: #04523C; }
+    .stat-num {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 1.35rem;
+      color: #ffffff;
+      line-height: 1;
+      margin-bottom: 5px;
+    }
+    .stat-desc {
+      font-size: 0.58rem;
+      color: rgba(255,255,255,0.87);
+      line-height: 1.45;
+    }
+    .stat-src {
+      font-size: 0.52rem;
+      color: rgba(255,255,255,0.5);
+      margin-top: 5px;
+      font-style: italic;
+    }
+
+    /* ── GENERAL ONEPAGER ───────────────────────────── */
+    .sec-general { background: #ffffff; }
+    .overview-card {
+      border: 1.5px solid #e0e0e0;
+      border-left: 4px solid #04523C;
+      border-radius: 8px;
+      padding: 18px 18px 18px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .overview-card-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #04523C;
+    }
+    .overview-card-desc {
+      font-size: 0.83rem;
+      color: #555555;
+      line-height: 1.65;
+    }
+
+    /* ── INDUSTRY SECTION ───────────────────────────── */
+    .sec-industry { background: #393939; }
+    .sec-industry .sec-label { color: rgba(182,146,72,0.85); }
+    .sec-industry .sec-title { color: #ffffff; margin-bottom: 18px; }
+
+    .industry-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .ind-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 18px 12px 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      text-align: center;
+      transition: background 0.18s;
+    }
+    .ind-card:has(.btn-gold:hover) { background: rgba(255,255,255,0.1); }
+    .ind-icon {
+      width: 34px; height: 34px;
+      color: #B69248;
+      flex-shrink: 0;
+    }
+    .ind-name {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #ffffff;
+      line-height: 1.3;
+      min-height: 2.4em;
+      display: flex;
+      align-items: center;
+    }
+    .ind-card.disabled { opacity: 0.45; }
+    .ind-card.disabled .ind-icon { color: #888; }
+    .ind-card.disabled .ind-name { color: #999; }
+
+    /* ── FOOTER ─────────────────────────────────────── */
+    .footer {
+      background: #04523C;
+      border-top: 3px solid #B69248;
+      padding: 24px 20px 28px;
+      text-align: center;
+    }
+    .footer-copy {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 10px;
+    }
+    .footer-link {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #B69248;
+      text-decoration: none;
+    }
+    .footer-link:hover { color: #ffffff; }
   </style>
 </head>
-<body>
-  <h1>TechGuard Labs Foundation</h1>
-  <p class="sub">All my links in one place</p>
 
-  <a class="btn" href="https://techguardlabs.com">🌐 Our Website</a>
-  <a class="btn" href="https://linkedin.com/in/yourprofile">💼 LinkedIn</a>
-  <a class="btn" href="https://t.me/yourusername">✈️ Telegram</a>
-  <a class="btn" href="info@techguardlabs.com">📧 Email Us</a>
+<body>
+<div class="page">
+
+  <!-- ════════════════════════════════════
+       HEADER
+  ═══════════════════════════════════════ -->
+  <header class="header">
+    <div class="logo-wrap">
+      <svg width="468" height="198" viewBox="0 0 468 198" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="TechGuard Labs Foundation">
+        <!-- GUARD (gold) -->
+        <path d="M419.516 163.577V123.647H446.334C449.301 123.647 452.065 124.095 454.624 124.99C457.183 125.847 459.428 127.133 461.356 128.848C463.285 130.563 464.788 132.67 465.863 135.168C466.976 137.628 467.532 140.443 467.532 143.612C467.532 146.185 467.18 148.515 466.475 150.603C465.771 152.691 464.769 154.536 463.471 156.139C462.21 157.742 460.689 159.103 458.908 160.222C457.128 161.303 455.18 162.142 453.066 162.738C450.952 163.298 448.708 163.577 446.334 163.577H419.516ZM430.143 155.468H444.887C446.037 155.468 447.168 155.319 448.281 155.021C449.431 154.723 450.488 154.275 451.453 153.679C452.454 153.082 453.326 152.318 454.068 151.386C454.847 150.454 455.44 149.354 455.848 148.086C456.293 146.781 456.516 145.29 456.516 143.612C456.516 141.525 456.182 139.735 455.514 138.244C454.884 136.715 453.994 135.485 452.844 134.553C451.731 133.583 450.488 132.875 449.116 132.428C447.743 131.98 446.334 131.756 444.887 131.756H430.143V155.468Z" fill="#B69248"/>
+        <path d="M368.466 163.577V123.647H397.46C400.387 123.647 402.902 124.076 405.004 124.934C407.106 125.754 408.738 126.984 409.902 128.625C411.065 130.228 411.647 132.204 411.647 134.553C411.647 136.417 411.234 138.132 410.409 139.698C409.583 141.226 408.288 142.494 406.524 143.5C404.797 144.507 402.489 145.141 399.599 145.402L400.275 144.843C402.339 144.88 404.028 145.178 405.342 145.737C406.693 146.259 407.781 147.08 408.607 148.198C409.433 149.279 410.108 150.696 410.634 152.448L413.955 163.577H402.752L399.937 154.014C399.487 152.448 398.773 151.255 397.798 150.435C396.822 149.615 395.396 149.205 393.519 149.205H379.08V163.577H368.466ZM379.08 131.756V149.205L386.512 141.096H395.602C396.465 141.096 397.253 140.947 397.967 140.648C398.717 140.313 399.318 139.81 399.768 139.138C400.218 138.43 400.444 137.517 400.444 136.398C400.444 134.72 399.937 133.527 398.924 132.819C397.948 132.111 396.841 131.756 395.602 131.756L379.08 131.735L379.08 131.756Z" fill="#B69248"/>
+        <path d="M310.846 163.577L330.339 123.647H342.963L362.401 163.577H350.783L334.808 129.128H337.656L321.57 163.577H310.846ZM322.352 155.245V147.415H350.001V155.245H322.352Z" fill="#B69248"/>
+        <path d="M287.648 164.083C283.187 164.083 279.335 163.379 276.091 161.972C272.848 160.528 270.323 158.454 268.516 155.751C266.747 153.011 265.862 149.623 265.862 145.587V123.647H276.423V145.642C276.423 147.753 276.884 149.604 277.806 151.197C278.764 152.752 280.109 153.974 281.842 154.863C283.574 155.714 285.639 156.14 288.035 156.14C290.468 156.14 292.513 155.714 294.172 154.863C295.868 154.011 297.14 152.807 297.987 151.252C298.872 149.66 299.314 147.809 299.314 145.698V123.647H308.825V145.587C308.825 149.586 307.977 152.956 306.281 155.696C304.622 158.436 302.208 160.528 299.038 161.972C295.905 163.379 292.108 164.083 287.648 164.083Z" fill="#B69248"/>
+        <path d="M231.037 164.356C227.924 164.356 224.996 163.874 222.253 162.91C219.51 161.946 217.082 160.575 214.97 158.796C212.857 157.017 211.189 154.848 209.966 152.291C208.78 149.733 208.187 146.879 208.187 143.729C208.187 141.616 208.446 139.651 208.965 137.835C209.521 135.982 210.318 134.295 211.356 132.776C212.393 131.219 213.654 129.848 215.136 128.661C216.656 127.475 218.361 126.475 220.251 125.659C222.179 124.807 224.273 124.176 226.534 123.769C228.795 123.324 231.241 123.102 233.873 123.102C237.283 123.102 240.378 123.435 243.158 124.102C245.938 124.732 248.366 125.659 250.441 126.882C252.517 128.068 254.185 129.495 255.445 131.163C256.742 132.794 257.539 134.629 257.836 136.668H246.494C246.086 135.741 245.326 134.851 244.214 133.999C243.139 133.146 241.749 132.461 240.044 131.942C238.339 131.423 236.264 131.163 233.817 131.163C232.335 131.163 230.945 131.293 229.648 131.553C228.35 131.812 227.164 132.201 226.089 132.72C225.014 133.202 224.051 133.814 223.198 134.555C222.346 135.259 221.623 136.075 221.03 137.001C220.474 137.928 220.029 138.966 219.695 140.115C219.399 141.227 219.251 142.431 219.251 143.729C219.251 146.323 219.844 148.566 221.03 150.456C222.216 152.309 223.902 153.755 226.089 154.793C228.276 155.793 230.852 156.294 233.817 156.294C235.745 156.294 237.542 156.071 239.21 155.627C240.915 155.182 242.398 154.496 243.658 153.569C244.919 152.643 245.919 151.475 246.661 150.067C247.439 148.621 247.902 146.935 248.051 145.007L250.794 149.425H235.03L242.106 142.349H257.775V163.577H247.884V154.014L248.94 155.46C247.865 157.387 246.457 159.018 244.715 160.353C243.01 161.65 241.008 162.651 238.71 163.355C236.412 164.022 233.854 164.356 231.037 164.356Z" fill="#B69248"/>
+        <!-- TECH (white on green header) -->
+        <path d="M156.182 163.577V123.647H166.76V163.577H156.182ZM189.577 163.577V123.647H200.155V163.577H189.577ZM166.76 147.403L174.377 139.316H190.046V147.403H166.76Z" fill="#FFFFFF"/>
+        <path d="M123.923 164.042C118.798 164.042 114.331 163.215 110.524 161.559C106.753 159.867 103.824 157.495 101.737 154.442C99.6872 151.352 98.6621 147.728 98.6621 143.572C98.6621 141.475 98.9184 139.526 99.4309 137.723C99.9801 135.884 100.749 134.21 101.737 132.702C102.762 131.194 104.007 129.851 105.472 128.674C106.973 127.46 108.657 126.449 110.524 125.64C112.391 124.794 114.441 124.168 116.674 123.764C118.944 123.322 121.36 123.102 123.923 123.102C128.609 123.102 132.691 123.69 136.169 124.867C139.647 126.044 142.411 127.718 144.461 129.888C146.548 132.058 147.793 134.707 148.195 137.834H137.048C136.608 136.399 135.784 135.185 134.576 134.192C133.405 133.199 131.922 132.445 130.128 131.93C128.334 131.378 126.266 131.102 123.923 131.102C122.495 131.102 121.122 131.231 119.804 131.488C118.523 131.746 117.351 132.132 116.29 132.647C115.228 133.125 114.276 133.732 113.434 134.468C112.629 135.167 111.933 135.994 111.347 136.951C110.798 137.87 110.359 138.882 110.029 139.985C109.737 141.089 109.59 142.284 109.59 143.572C109.59 146.147 110.176 148.372 111.347 150.248C112.519 152.087 114.166 153.522 116.29 154.552C118.45 155.545 120.994 156.042 123.923 156.042C126.266 156.042 128.334 155.784 130.128 155.269C131.922 154.717 133.405 153.945 134.576 152.952C135.748 151.959 136.553 150.745 136.993 149.31H148.195C147.793 152.437 146.548 155.104 144.461 157.311C142.411 159.481 139.647 161.155 136.169 162.332C132.728 163.472 128.646 164.042 123.923 164.042Z" fill="#FFFFFF"/>
+        <path d="M51.5547 163.577V123.647H90.979V131.756L62.1689 131.735V147.403L69.7505 139.822H88.9573V147.403H62.1689V155.49L90.979 155.468V163.577H51.5547Z" fill="#FFFFFF"/>
+        <path d="M16.7121 163.577V131.701H0V123.647H43.9733V131.701H27.3167V163.577H16.7121Z" fill="#FFFFFF"/>
+        <!-- LABS FOUNDATION (white) -->
+        <path d="M395.504 196.936V180.257H400.524L411.38 193.082L410.166 193.362V180.257H414.205V196.936H409.162L398.539 184.392L399.52 184.018V196.936H395.504Z" fill="#FFFFFF"/>
+        <path d="M377.204 197.508C375.001 197.508 373.082 197.15 371.446 196.435C369.826 195.72 368.567 194.702 367.67 193.383C366.774 192.048 366.325 190.475 366.325 188.663C366.325 187.757 366.435 186.914 366.656 186.135C366.892 185.341 367.23 184.617 367.67 183.966C368.111 183.298 368.646 182.71 369.275 182.202C369.92 181.693 370.644 181.264 371.446 180.914C372.248 180.549 373.129 180.278 374.089 180.103C375.049 179.913 376.087 179.817 377.204 179.817C379.406 179.817 381.318 180.183 382.938 180.914C384.574 181.629 385.833 182.647 386.714 183.966C387.611 185.285 388.059 186.851 388.059 188.663C388.059 189.569 387.949 190.419 387.729 191.214C387.509 191.992 387.17 192.716 386.714 193.383C386.274 194.035 385.739 194.615 385.109 195.124C384.48 195.632 383.756 196.069 382.938 196.435C382.136 196.785 381.255 197.047 380.295 197.222C379.336 197.412 378.305 197.508 377.204 197.508ZM377.204 194.051C377.833 194.051 378.415 193.995 378.95 193.884C379.501 193.773 380.004 193.614 380.46 193.407C380.932 193.185 381.342 192.922 381.688 192.62C382.049 192.302 382.356 191.945 382.608 191.547C382.86 191.15 383.048 190.713 383.174 190.236C383.3 189.743 383.363 189.219 383.363 188.663C383.363 187.534 383.111 186.572 382.608 185.778C382.105 184.967 381.389 184.347 380.46 183.918C379.548 183.489 378.463 183.274 377.204 183.274C376.575 183.274 375.985 183.33 375.434 183.441C374.883 183.553 374.38 183.719 373.924 183.942C373.468 184.149 373.059 184.411 372.697 184.729C372.335 185.031 372.028 185.38 371.776 185.778C371.525 186.175 371.336 186.612 371.21 187.089C371.084 187.566 371.021 188.09 371.021 188.663C371.021 189.775 371.273 190.737 371.776 191.547C372.28 192.358 372.996 192.978 373.924 193.407C374.868 193.836 375.961 194.051 377.204 194.051Z" fill="#FFFFFF"/>
+        <path d="M353.808 196.936V180.257H358.357V196.936H353.808Z" fill="#FFFFFF"/>
+        <path d="M334.127 196.936V183.621H327.02V180.257H345.721V183.621H338.637V196.936H334.127Z" fill="#FFFFFF"/>
+        <path d="M303.494 196.936L311.521 180.257H316.719L324.723 196.936H319.939L313.361 182.546H314.534L307.91 196.936H303.494ZM308.232 193.456V190.185H319.617V193.456H308.232Z" fill="#FFFFFF"/>
+        <path d="M249.687 196.936V180.257H254.706L265.563 193.082L264.349 193.362V180.257H268.388V196.936H263.345L252.722 184.392L253.702 184.018V196.936H249.687Z" fill="#FFFFFF"/>
+        <path d="M277.486 196.936V180.257H288.778C290.028 180.257 291.191 180.444 292.269 180.817C293.346 181.176 294.291 181.713 295.104 182.429C295.916 183.146 296.548 184.026 297.001 185.069C297.47 186.097 297.704 187.273 297.704 188.597C297.704 189.671 297.556 190.645 297.259 191.517C296.962 192.389 296.54 193.16 295.994 193.829C295.463 194.499 294.822 195.068 294.073 195.535C293.323 195.986 292.503 196.337 291.613 196.586C290.723 196.82 289.778 196.936 288.778 196.936H277.486ZM281.961 193.549H288.169C288.653 193.549 289.13 193.487 289.598 193.362C290.082 193.238 290.527 193.051 290.933 192.802C291.355 192.552 291.722 192.233 292.035 191.844C292.363 191.454 292.612 190.995 292.784 190.465C292.972 189.92 293.065 189.297 293.065 188.597C293.065 187.724 292.925 186.977 292.644 186.354C292.378 185.715 292.003 185.202 291.519 184.812C291.051 184.407 290.527 184.111 289.95 183.924C289.372 183.738 288.778 183.644 288.169 183.644H281.961V193.549Z" fill="#FFFFFF"/>
+        <path d="M231.621 197.442C229.679 197.442 228.002 197.143 226.59 196.545C225.178 195.931 224.079 195.05 223.293 193.901C222.523 192.736 222.138 191.296 222.138 189.581V180.257H226.735V189.605C226.735 190.502 226.935 191.289 227.337 191.965C227.754 192.626 228.339 193.146 229.094 193.523C229.848 193.885 230.746 194.066 231.789 194.066C232.848 194.066 233.739 193.885 234.461 193.523C235.199 193.161 235.752 192.65 236.122 191.989C236.507 191.312 236.699 190.525 236.699 189.628V180.257H240.839V189.581C240.839 191.281 240.47 192.713 239.732 193.877C239.01 195.042 237.959 195.931 236.579 196.545C235.215 197.143 233.562 197.442 231.621 197.442Z" fill="#FFFFFF"/>
+        <path d="M203.091 197.441C200.888 197.441 198.969 197.084 197.333 196.369C195.712 195.653 194.454 194.636 193.557 193.317C192.66 191.982 192.212 190.408 192.212 188.596C192.212 187.69 192.322 186.848 192.542 186.069C192.778 185.274 193.117 184.551 193.557 183.899C193.998 183.232 194.532 182.644 195.162 182.135C195.807 181.627 196.53 181.197 197.333 180.848C198.135 180.482 199.016 180.212 199.976 180.037C200.935 179.846 201.974 179.751 203.091 179.751C205.293 179.751 207.205 180.117 208.825 180.848C210.461 181.563 211.72 182.58 212.601 183.899C213.497 185.219 213.946 186.784 213.946 188.596C213.946 189.502 213.836 190.353 213.615 191.147C213.395 191.926 213.057 192.649 212.601 193.317C212.16 193.968 211.625 194.549 210.996 195.057C210.367 195.566 209.643 196.003 208.825 196.369C208.023 196.718 207.142 196.98 206.182 197.155C205.222 197.346 204.192 197.441 203.091 197.441ZM203.091 193.984C203.72 193.984 204.302 193.929 204.837 193.817C205.388 193.706 205.891 193.547 206.347 193.341C206.819 193.118 207.228 192.856 207.574 192.554C207.936 192.236 208.243 191.878 208.495 191.481C208.746 191.084 208.935 190.647 209.061 190.17C209.187 189.677 209.25 189.152 209.25 188.596C209.25 187.468 208.998 186.506 208.495 185.711C207.991 184.901 207.275 184.281 206.347 183.852C205.435 183.423 204.349 183.208 203.091 183.208C202.461 183.208 201.871 183.264 201.321 183.375C200.77 183.486 200.267 183.653 199.811 183.876C199.354 184.082 198.945 184.344 198.583 184.662C198.222 184.964 197.915 185.314 197.663 185.711C197.411 186.109 197.223 186.546 197.097 187.023C196.971 187.499 196.908 188.024 196.908 188.596C196.908 189.709 197.16 190.67 197.663 191.481C198.167 192.292 198.882 192.911 199.811 193.341C200.754 193.77 201.848 193.984 203.091 193.984Z" fill="#FFFFFF"/>
+        <path d="M167.806 196.936V180.257H183.98V183.795H172.355V186.828H182.969V190.366H172.355V196.936H167.806Z" fill="#FFFFFF"/>
+        <path d="M137.165 197.441C135.608 197.441 134.234 197.314 133.043 197.06C131.851 196.806 130.834 196.44 129.992 195.963C129.166 195.486 128.531 194.914 128.086 194.247C127.657 193.563 127.419 192.808 127.371 191.982H132.066C132.161 192.315 132.344 192.625 132.614 192.911C132.884 193.182 133.225 193.42 133.638 193.627C134.067 193.817 134.576 193.968 135.163 194.08C135.751 194.191 136.418 194.247 137.165 194.247C138.134 194.247 138.96 194.167 139.643 194.008C140.342 193.833 140.883 193.587 141.264 193.269C141.645 192.951 141.836 192.578 141.836 192.149C141.836 191.878 141.772 191.648 141.645 191.457C141.518 191.266 141.319 191.107 141.049 190.98C140.795 190.853 140.462 190.766 140.048 190.718L134.139 189.979C133.106 189.852 132.185 189.661 131.374 189.407C130.564 189.152 129.889 188.827 129.349 188.429C128.809 188.032 128.396 187.547 128.11 186.975C127.824 186.403 127.681 185.743 127.681 184.996C127.681 184.185 127.887 183.454 128.3 182.803C128.714 182.151 129.317 181.603 130.112 181.158C130.906 180.697 131.859 180.347 132.971 180.109C134.099 179.87 135.378 179.751 136.808 179.751C138.237 179.751 139.492 179.87 140.573 180.109C141.669 180.331 142.59 180.665 143.337 181.11C144.1 181.539 144.679 182.064 145.077 182.683C145.49 183.287 145.72 183.963 145.768 184.71H141.049C140.986 184.344 140.779 184.035 140.43 183.78C140.096 183.51 139.62 183.303 139 183.16C138.38 183.017 137.61 182.946 136.689 182.946C135.783 182.946 135.005 183.017 134.353 183.16C133.702 183.303 133.209 183.51 132.876 183.78C132.558 184.05 132.399 184.376 132.399 184.758C132.399 185.028 132.479 185.274 132.637 185.497C132.812 185.703 133.051 185.878 133.352 186.021C133.654 186.148 134.012 186.244 134.425 186.307L140.549 187.046C141.852 187.205 142.948 187.492 143.837 187.905C144.727 188.318 145.402 188.858 145.863 189.526C146.34 190.194 146.578 191.004 146.578 191.958C146.578 192.864 146.371 193.659 145.958 194.342C145.561 195.01 144.957 195.582 144.147 196.059C143.353 196.52 142.368 196.869 141.192 197.108C140.033 197.33 138.69 197.441 137.165 197.441Z" fill="#FFFFFF"/>
+        <path d="M101.088 196.936V180.257H113.847C115.489 180.257 116.767 180.623 117.682 181.355C118.613 182.071 119.079 183.068 119.079 184.345C119.079 185.17 118.882 185.887 118.487 186.494C118.093 187.086 117.524 187.545 116.783 187.872C116.057 188.184 115.165 188.363 114.108 188.41L114.534 188.27C115.607 188.285 116.538 188.456 117.327 188.783C118.116 189.111 118.724 189.586 119.15 190.208C119.576 190.816 119.789 191.54 119.789 192.381C119.789 193.331 119.552 194.149 119.079 194.834C118.606 195.504 117.927 196.025 117.043 196.399C116.159 196.757 115.094 196.936 113.847 196.936H101.088ZM105.609 193.572H113.185C113.563 193.572 113.895 193.502 114.179 193.362C114.463 193.206 114.684 192.996 114.842 192.731C114.999 192.467 115.078 192.155 115.078 191.797C115.078 191.408 114.999 191.081 114.842 190.816C114.684 190.536 114.463 190.317 114.179 190.162C113.895 190.006 113.563 189.928 113.185 189.928H105.609V193.572ZM105.609 186.891H112.782C113.129 186.891 113.429 186.821 113.682 186.681C113.95 186.541 114.155 186.346 114.297 186.097C114.439 185.848 114.51 185.552 114.51 185.209C114.51 184.727 114.352 184.345 114.037 184.065C113.721 183.769 113.287 183.621 112.735 183.621H105.609V186.891Z" fill="#FFFFFF"/>
+        <path d="M72.7832 196.936L81.0011 180.257H86.3228L94.5171 196.936H89.6193L82.8849 182.546H84.0858L77.3042 196.936H72.7832ZM77.6339 193.456V190.185H89.2897V193.456H77.6339Z" fill="#FFFFFF"/>
+        <path d="M51.5547 196.936V180.257H56.055V193.549H67.2233V196.936H51.5547Z" fill="#FFFFFF"/>
+        <!-- Hexagon mark -->
+        <path d="M242.356 4.74219L284.487 29.0665V77.7151L242.356 102.039L200.225 77.7151V29.0665L242.356 4.74219Z" stroke="#B69248" stroke-width="8.2134"/>
+        <path d="M242.355 14.2188L276.473 33.8046V72.9762L242.355 92.562L208.238 72.9762V33.8046L242.355 14.2188Z" fill="#033528"/>
+        <!-- Icon (white) -->
+        <path d="M231.796 32.8076L239.438 46.0445C240.751 48.3186 244.033 48.3186 245.346 46.0445L252.989 32.8076" stroke="white" stroke-width="2.04665"/>
+        <circle cx="242.328" cy="32.0906" r="4.15867" fill="white" stroke="white" stroke-width="0.682216"/>
+        <path d="M252.989 74.0479L245.347 60.811C244.034 58.5369 240.752 58.5369 239.439 60.8109L231.797 74.0478" stroke="white" stroke-width="2.04665"/>
+        <circle cx="242.327" cy="74.634" r="4.15867" transform="rotate(-180 242.327 74.634)" fill="white" stroke="white" stroke-width="0.682216"/>
+        <path d="M263.013 42.8301L249.776 50.4723C247.502 51.7852 247.502 55.0676 249.776 56.3805L263.013 64.0228" stroke="white" stroke-width="2.04665"/>
+        <circle cx="263.599" cy="53.364" r="4.15867" transform="rotate(90 263.599 53.364)" fill="white" stroke="white" stroke-width="0.682216"/>
+        <path d="M221.773 64.0234L235.01 56.3812C237.284 55.0683 237.284 51.786 235.01 50.473L221.773 42.8307" stroke="white" stroke-width="2.04665"/>
+        <circle cx="221.055" cy="53.3625" r="4.15867" transform="rotate(-90 221.055 53.3625)" fill="white" stroke="white" stroke-width="0.682216"/>
+      </svg>
+    </div>
+    <p class="tagline">Cybersecurity Consulting Services</p>
+  </header>
+
+
+  <!-- ════════════════════════════════════
+       CONNECT
+  ═══════════════════════════════════════ -->
+  <section class="sec sec-connect" aria-label="Connect with us">
+    <p class="sec-label">Connect With Us</p>
+
+    <a class="btn btn-primary" href="https://www.techguardlabs.com" target="_blank" rel="noopener noreferrer" aria-label="Visit TechGuard Labs website">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      Visit Our Website
+    </a>
+
+    <a class="btn btn-outline" href="https://www.linkedin.com/company/techguard-labs-foundation/about/" target="_blank" rel="noopener noreferrer" aria-label="TechGuard Labs on LinkedIn">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      Connect on LinkedIn
+    </a>
+
+    <span class="btn btn-disabled" aria-disabled="true" role="button">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      Instagram — Coming Soon
+    </span>
+  </section>
+
+
+  <!-- ════════════════════════════════════
+       ABOUT
+  ═══════════════════════════════════════ -->
+  <section class="sec sec-about" aria-label="About TechGuard Labs">
+    <p class="sec-label">Who We Are</p>
+    <p class="about-body">TechGuard Labs is a joint Israel–India cybersecurity center established in 2026 in Coimbatore, Tamil Nadu, founded by SNR Sons Trust, Ariel University, ERA IT Consulting &amp; Audit Ltd, and Promitei Ltd. We bring together proven Israeli cybersecurity methodologies with deep local Indian expertise — covering the full cyber lifecycle from risk assessment and governance through continuous monitoring, incident response, and recovery.</p>
+    <div class="stats" role="list">
+      <div class="stat s-grey" role="listitem">
+        <div class="stat-num">~7%</div>
+        <div class="stat-desc">of Indian organizations are well-prepared for modern cyber threats</div>
+        <div class="stat-src">CISCO, 2025</div>
+      </div>
+      <div class="stat s-gold" role="listitem">
+        <div class="stat-num">#2</div>
+        <div class="stat-desc">India's cyberspace — the world's second most targeted</div>
+        <div class="stat-src">CloudSEK, 2024</div>
+      </div>
+      <div class="stat s-green" role="listitem">
+        <div class="stat-num" style="font-size:1.05rem;">181+241</div>
+        <div class="stat-desc">Avg. days to detect and fully contain a breach</div>
+        <div class="stat-src">IBM, 2025</div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════
+       GENERAL ONE-PAGER
+  ═══════════════════════════════════════ -->
+  <section class="sec sec-general" aria-label="Company overview">
+    <p class="sec-label">Company Overview</p>
+    <div class="gold-rule"></div>
+    <div class="overview-card">
+      <p class="overview-card-title">Cybersecurity Consulting Services</p>
+      <p class="overview-card-desc">Excellence in strategy, compliance, technology, and talent for cyber-resilience. Covering Advisory &amp; Compliance, Architecture &amp; Solution Tailoring, Managed Services, and Training &amp; Certification.</p>
+      <a class="btn btn-primary" href="https://techguardlabs-my.sharepoint.com/:b:/p/mark/IQBGfwj2DIg3SbQ2UzSixRKFATClc58lpimKGCioeWbA8uU?e=K8dPgS" target="_blank" rel="noopener noreferrer">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download Overview
+      </a>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════
+       INDUSTRY ONE-PAGERS
+  ═══════════════════════════════════════ -->
+  <section class="sec sec-industry" aria-label="Industry one-pagers">
+    <p class="sec-label">Industry Solutions</p>
+    <p class="sec-title">Sector-Specific One-Pagers</p>
+
+    <div class="industry-grid">
+
+      <!-- BFSI -->
+      <div class="ind-card">
+        <svg class="ind-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="22" x2="21" y2="22"/><line x1="6" y1="18" x2="6" y2="11"/><line x1="10" y1="18" x2="10" y2="11"/><line x1="14" y1="18" x2="14" y2="11"/><line x1="18" y1="18" x2="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg>
+        <div class="ind-name">BFSI</div>
+        <a class="btn btn-gold btn-sm" href="https://techguardlabs-my.sharepoint.com/:b:/p/mark/IQDuwylQUqruRpFGZESqyV6nAUd02fs0TcFQjVxJvW_j2xg?e=YklAQq" target="_blank" rel="noopener noreferrer">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download
+        </a>
+      </div>
+
+      <!-- Healthcare -->
+      <div class="ind-card">
+        <svg class="ind-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        <div class="ind-name">Healthcare</div>
+        <a class="btn btn-gold btn-sm" href="https://techguardlabs-my.sharepoint.com/:b:/p/mark/IQCHeok_8o3fRqyWpp0V_5D7AelGEcDgbhk_lpv7Ip63sJM?e=rtMIfn" target="_blank" rel="noopener noreferrer">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download
+        </a>
+      </div>
+
+      <!-- Manufacturing -->
+      <div class="ind-card">
+        <svg class="ind-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="20.5" width="14" height="2.5" rx="1"/><line x1="4" y1="21" x2="8" y2="13"/><line x1="12" y1="21" x2="8" y2="13"/><circle cx="8" cy="12" r="2.5"/><circle cx="8" cy="12" r="1" fill="currentColor" stroke="none"/><line x1="8" y1="12" x2="17" y2="5.5"/><circle cx="17" cy="5.5" r="1.8"/><line x1="17" y1="5.5" x2="21" y2="9.5"/><path d="M21 9.5l2-2M21 9.5l2 1.5"/></svg>
+        <div class="ind-name">Manufacturing</div>
+        <a class="btn btn-gold btn-sm" href="https://techguardlabs-my.sharepoint.com/:b:/p/mark/IQBuHg6GC8lvR7u7iwMXvn6HAQFSW9TEzbX4ZbvGIJHaVk0?e=vFUPcz" target="_blank" rel="noopener noreferrer">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download
+        </a>
+      </div>
+
+      <!-- Logistics & Supply Chain -->
+      <div class="ind-card">
+        <svg class="ind-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        <div class="ind-name">Logistics &amp; Supply Chain</div>
+        <a class="btn btn-gold btn-sm" href="https://techguardlabs-my.sharepoint.com/:b:/p/mark/IQA3eZac-AolT6TYMMODl-wxARZtkIzvcTmj8tg11fQoJoc?e=14wMFk" target="_blank" rel="noopener noreferrer">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download
+        </a>
+      </div>
+
+      <!-- Telecom -->
+      <div class="ind-card">
+        <svg class="ind-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.28h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 5.55 5.55l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.02z"/></svg>
+        <div class="ind-name">Telecom</div>
+        <a class="btn btn-gold btn-sm" href="https://techguardlabs-my.sharepoint.com/:b:/p/mark/IQCEa-aHTWlGQrZa5iHyvQqFAe6NWNcB9LiGLKv3Vv44MbI?e=8LN7IL" target="_blank" rel="noopener noreferrer">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download
+        </a>
+      </div>
+
+      <!-- IT Services — coming soon -->
+      <div class="ind-card disabled" aria-disabled="true">
+        <svg class="ind-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        <div class="ind-name">IT Services</div>
+        <span class="btn btn-disabled btn-sm" style="font-size:0.65rem;">Coming Soon</span>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════ -->
+  <footer class="footer">
+    <p class="footer-copy">© 2026 TechGuard Labs Foundation. All rights reserved.</p>
+    <a class="footer-link" href="https://www.techguardlabs.com" target="_blank" rel="noopener noreferrer">techguardlabs.com</a>
+  </footer>
+
+</div>
 </body>
 </html>
