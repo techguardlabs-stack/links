@@ -288,6 +288,67 @@
       text-decoration: none;
     }
     .footer-link:hover { color: #ffffff; }
+
+
+
+    .sec-connect {
+  background: #ffffff;
+}
+
+.tg-connect {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  padding-top: 34px;
+  padding-bottom: 34px;
+}
+
+.tg-connect-label {
+  grid-column: 1 / -1;
+  margin: 0;
+  font-size: 1.125rem;
+  color: #04523c;
+}
+
+.tg-connect-title {
+  margin: 0;
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 700;
+  font-size: 1.8rem;
+  line-height: 1.16;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #04523c;
+}
+
+.tg-connect-copy {
+  margin-top: 0;
+  margin-bottom: 18px;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: #1e1e1e;
+}
+
+.tg-connect-copy strong {
+  font-weight: 700;
+  color: #04523c;
+}
+
+@media (min-width: 430px) {
+  .tg-connect {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+
+  .tg-connect-label {
+    grid-column: 1 / -1;
+    color: #B69248;
+  }
+
+  .tg-connect-title {
+    font-size: 1.55rem;
+  }
+}
   </style>
 </head>
 
@@ -343,19 +404,50 @@
     <p class="tagline">Cybersecurity Consulting Services</p>
   </header>
 
-
+  
   <section class="sec sec-connect tg-connect" aria-label="Refer us">
-    <h4 class="sec-label" style="font-size: large;">TG Connect</h4>
-    <p class="sec-title">Turn Your Network Into a Revenue Stream.</p>
-    <div class="tg-connect-body">
-      <p class="tg-connect-copy">Introduce an organization that needs cybersecurity services from TechGuard Labs - <strong>earn commission from each successful sale.</strong></p>
-      <br>
-      <a class="btn btn-gold" href="https://odoo.techguardlabs.com/referral/join" target="_blank" rel="noopener noreferrer" aria-label="Join TechGuard Labs referral program">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        Join Referral Program
-      </a>
-    </div>
-  </section>
+  <h4 class="sec-label tg-connect-label">TG Connect</h4>
+
+  <p class="tg-connect-title">
+    Turn Your Network Into a Revenue Stream.
+  </p>
+
+  <div class="tg-connect-body">
+    <p class="tg-connect-copy">
+      Introduce an organization that needs cybersecurity services from
+      TechGuard Labs —
+      <strong>earn commission from each successful sale.</strong>
+    </p>
+
+    <a
+      class="btn btn-gold"
+      style="font-size:14.5px;"
+      href="https://odoo.techguardlabs.com/referral/join"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Join TechGuard Labs referral program"
+    >
+      <svg
+        width="14"
+        height="14"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+        <circle cx="9" cy="7" r="4" />
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+      </svg>
+
+      Join Referral Program
+    </a>
+  </div>
+</section>
 
   <!-- ════════════════════════════════════
        CONNECT
@@ -420,7 +512,7 @@
     <div class="overview-card">
       <p class="overview-card-title">Cybersecurity Consulting Services</p>
       <p class="overview-card-desc">Excellence in strategy, compliance, technology, and talent for cyber-resilience. Covering Advisory &amp; Compliance, Architecture &amp; Solution Tailoring, Managed Services, and Training &amp; Certification.</p>
-      <a class="btn btn-primary" href="https://techguardlabs-my.sharepoint.com/:b:/p/mark/IQBGfwj2DIg3SbQ2UzSixRKFATClc58lpimKGCioeWbA8uU?e=K8dPgS" target="_blank" rel="noopener noreferrer">
+      <a class="btn btn-primary" href="Consulting-Service.pdf" target="_blank" rel="noopener noreferrer">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         Download Overview
       </a>
@@ -512,4 +604,3 @@
 </div>
 </body>
 </html>
-
